@@ -1,0 +1,46 @@
+# beat 1 - set in, sorted list out
+def unique(items):
+    raise NotImplementedError
+
+
+assert unique([3, 1, 3, 2, 1]) == [1, 2, 3]
+assert unique([]) == []
+assert unique([10, 3, 7, 3]) == [3, 7, 10]
+
+
+# beat 2 - intersection
+def common(a, b):
+    raise NotImplementedError
+
+
+assert common([1, 2, 3], [2, 3, 4]) == {2, 3}
+assert common([1], [2]) == set()
+
+
+# beat 3 - difference
+def only_in_first(a, b):
+    raise NotImplementedError
+
+
+assert only_in_first([1, 2, 3], [2, 3, 4]) == {1}
+assert only_in_first([1, 2], [1, 2]) == set()
+
+
+# beat 4 - an actual bool, not a count
+def has_duplicates(items):
+    raise NotImplementedError
+
+
+assert has_duplicates([1, 2, 1]) is True
+assert has_duplicates([1, 2, 3]) is False
+
+
+# beat 5 - the values appearing more than once
+def duplicates(items):
+    raise NotImplementedError
+
+
+assert duplicates([1, 2, 2, 3, 3, 3]) == {2, 3}
+assert duplicates([1, 2, 3]) == set()
+
+print("05 passed")
