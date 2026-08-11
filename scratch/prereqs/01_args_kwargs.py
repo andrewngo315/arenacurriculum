@@ -44,10 +44,11 @@ assert call_with(max, 3, 9, 4) == 9
 assert call_with(sorted, [3, 1, 2], reverse=True) == [3, 2, 1]
 
 # beat 6 - retention check, write from memory without scrolling up
-def twice(f):
-    raise NotImplementedError
+def twice(f, *args, **kwargs):
+    return (f(*args, **kwargs), f(*args, **kwargs))
+    
 
-
+print(twice(greet, "bob"))
 assert twice(greet, "bob") == ("hello bob!", "hello bob!")
 assert twice(greet, "bob", greeting="hi") == ("hi bob!", "hi bob!")
 assert twice(max, 3, 9, 4) == (9, 9)
