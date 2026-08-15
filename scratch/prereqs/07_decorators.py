@@ -6,9 +6,8 @@ def shout(text):
 
 
 # beat 1 - a function is an object. bind the function itself, do not call it
-alias = None
-if alias is None:
-    raise NotImplementedError
+alias = shout
+
 assert alias("hi") == "HI"
 assert alias is shout
 assert callable(alias)
@@ -16,7 +15,9 @@ assert callable(alias)
 
 # beat 2 - a function taken as an argument
 def apply_twice(f, x):
-    raise NotImplementedError
+    a = f(x)
+    b = f(a)
+    return b
 
 
 def add_one(n):
@@ -30,7 +31,9 @@ assert apply_twice(lambda n: n * 2, 3) == 12
 
 # beat 3 - a function returned from a function, closing over n
 def make_multiplier(n):
-    raise NotImplementedError
+    def inner(x):
+        return n * x
+    return inner
 
 
 double = make_multiplier(2)
@@ -44,7 +47,9 @@ assert (double is triple) is False
 
 # beat 4 - a decorator built by hand: takes a function, returns a new one
 def make_loud(f):
-    raise NotImplementedError
+    def inner(x):
+        return f(x) + "!!!"
+    return inner
 
 
 shout_loud = make_loud(shout)
@@ -71,8 +76,10 @@ assert greet("bob") == "hello bob!!!"
 
 # beat 6 - a wrapper that decorates any signature, and keeps the name it wrapped
 def loud(f):
-    raise NotImplementedError
-
+    @functools.wraps(f)
+    def inner(*args, **kwargs):
+        return f(*args, **kwargs) + "!!!"
+    return inner
 
 @loud
 def greet2(name, greeting="hello"):
@@ -88,7 +95,14 @@ assert greet.__name__ != "greet"
 
 # beat 7 - @thing() takes arguments, so it needs one more layer than @thing
 def repeat(n):
-    raise NotImplementedError
+    def decorator(f):
+        @functools.wraps(f)
+        def inner(*args, **kwargs):
+            return f(*args, **kwargs) * n
+        return inner
+    return decorator
+
+        
 
 
 @repeat(3)
