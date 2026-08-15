@@ -1,6 +1,6 @@
 # beat 1 - the full form: value_if_true if condition else value_if_false
 def sign_word(n):
-    raise NotImplementedError
+    return "positive" if n > 0 else "negative"
 
 
 assert sign_word(5) == "positive"
@@ -10,7 +10,7 @@ assert sign_word(0.5) == "positive"
 
 # beat 2 - two conditions, one expression. the second ternary goes in the else slot
 def bucket(n):
-    raise NotImplementedError
+    return "positive" if n > 0 else "zero" if n == 0 else "negative"
 
 
 assert bucket(5) == "positive"
@@ -21,7 +21,8 @@ assert bucket(0.0) == "zero"
 
 # beat 3 - the or default idiom, which the book presents as a shorthand ternary
 def display_name(given, fallback):
-    raise NotImplementedError
+    return given or fallback
+
 
 
 assert display_name("bob", "anon") == "bob"
@@ -33,7 +34,7 @@ assert display_name("anon", "") == "anon"
 
 # beat 4 - a ternary inside a comprehension. this is the form ARENA actually uses
 def clipped(nums, limit):
-    raise NotImplementedError
+    return [n if n < limit else limit for n in nums]
 
 
 assert clipped([1, 5, 9], 5) == [1, 5, 5]
