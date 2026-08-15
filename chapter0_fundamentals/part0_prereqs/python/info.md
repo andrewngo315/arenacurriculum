@@ -1,0 +1,1 @@
+These exercises were created by Claude to teach the Python prerequisite content suggested by ARENA. The exercise format uses asserts to identify a target goal for me to write a coding solution towards. 

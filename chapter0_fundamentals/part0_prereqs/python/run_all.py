@@ -95,6 +95,33 @@ def run_markdown(path):
     return "pass", None
 
 
+def statuses():
+    counts = {}
+    rows = []
+    for chapter in CHAPTERS:
+        number, title, path = chapter[0], chapter[1], chapter[2]
+        in_progress = len(chapter) > 3 and chapter[3]
+        if path.suffix == ".md":
+            status, line = run_markdown(path)
+        else:
+            status, line = run_python(path)
+        if in_progress and status in ("todo", "wrong", "error"):
+            status = "wip"
+        counts[status] = counts.get(status, 0) + 1
+        rows.append((number, title, path, status, line))
+    return rows, counts
+
+
+def summary(counts, total):
+    return (
+        f"{counts.get('pass', 0)}/{total} passing"
+        f"  |  {counts.get('wrong', 0)} wrong"
+        f"  |  {counts.get('wip', 0)} in progress"
+        f"  |  {counts.get('todo', 0)} not started"
+        f"  |  {counts.get('error', 0) + counts.get('missing', 0) + counts.get('hang', 0)} broken"
+    )
+
+
 def main():
     labels = {
         "pass": (GREEN, "pass "),
@@ -105,36 +132,31 @@ def main():
         "wip": (YELLOW, "wip  "),
         "hang": (YELLOW, "hang "),
     }
-    counts = {key: 0 for key in labels}
+    markdown = "--markdown" in sys.argv
+    rows, counts = statuses()
+    total = len(CHAPTERS)
+
+    if markdown:
+        print("| # | Chapter | Status |")
+        print("|---|---|---|")
+        for number, title, _, status, _ in rows:
+            print(f"| {number} | {title} | {labels[status][1].strip()} |")
+        print()
+        print(f"**{summary(counts, total)}**")
+        return 0 if counts.get("pass", 0) == total else 1
 
     print()
-    for chapter in CHAPTERS:
-        number, title, path = chapter[0], chapter[1], chapter[2]
-        in_progress = len(chapter) > 3 and chapter[3]
-        if path.suffix == ".md":
-            status, line = run_markdown(path)
-        else:
-            status, line = run_python(path)
-        if in_progress and status in ("todo", "wrong", "error"):
-            status = "wip"
-        counts[status] += 1
+    for number, title, path, status, line in rows:
         colour, label = labels[status]
         where = ""
         if line is not None and status != "pass":
             where = f"{GREY}{path.name}:{line}{RESET}"
         print(f"  {colour}{label}{RESET}  {number}. {title:<24} {where}")
 
-    total = len(CHAPTERS)
     print()
-    print(
-        f"  {counts['pass']}/{total} passing"
-        f"  |  {counts['wrong']} wrong"
-        f"  |  {counts['wip']} in progress"
-        f"  |  {counts['todo']} not started"
-        f"  |  {counts['error'] + counts['missing'] + counts['hang']} broken"
-    )
+    print(f"  {summary(counts, total)}")
     print()
-    return 0 if counts["pass"] == total else 1
+    return 0 if counts.get("pass", 0) == total else 1
 
 
 if __name__ == "__main__":

@@ -2,6 +2,7 @@
 ARENA_3.0/
 
 HOURS.md
+docs/
 
 __pycache__/
 *.py[cod]
