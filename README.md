@@ -17,7 +17,7 @@ Currently working through Chapter 0.0: Prerequisites (Python section)
 | 05 | set Data Structure | pass |
 | 06 | Ternary Operators | pass |
 | 07 | Decorators | pass |
-| 08 | Global & Return | todo |
+| 08 | Global & Return | pass |
 | 09 | Mutation | todo |
 | 10 | __slots__ Magic | todo |
 | 11 | Virtual Environment | todo |
