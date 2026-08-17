@@ -5,7 +5,10 @@ class TooSmallError(Exception):
 
 # beat 1 - try / except ZeroDivisionError, not an if
 def safe_div(a, b):
-    raise NotImplementedError
+    try:
+        return a / b
+    except ZeroDivisionError:
+        return None
 
 
 assert safe_div(6, 3) == 2
@@ -15,7 +18,10 @@ assert safe_div(7, 2) == 3.5
 
 # beat 2 - except ValueError
 def parse_int(text):
-    raise NotImplementedError
+    try:
+        return int(text)
+    except ValueError:
+        return 0
 
 
 assert parse_int("42") == 42
@@ -30,9 +36,15 @@ log = []
 
 # beat 3 - raise your own, and finally runs either way
 def guarded(n):
-    raise NotImplementedError
-
-
+    try: 
+        if n < 5:
+            raise TooSmallError(f"{n} is too small")
+        return n    
+    finally:
+            log.append("done")
+    
+            
+    
 assert guarded(10) == 10
 assert log == ["done"]
 
@@ -64,7 +76,12 @@ assert log == ["done"] * 5
 
 # beat 4 - the one place a broad except Exception is right
 def first_working(funcs):
-    raise NotImplementedError
+    for f in funcs:
+        try:
+            return f()
+        except Exception:
+            continue
+        return None
 
 
 def boom():
@@ -85,7 +102,12 @@ def div_zero():
 
 # beat 5 - two separate except blocks
 def classify(f):
-    raise NotImplementedError
+    try:
+        return f()
+    except ZeroDivisionError:
+        return "zero"
+    except ValueError:
+        return "value"
 
 
 assert classify(div_zero) == "zero"
