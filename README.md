@@ -22,7 +22,7 @@ Currently working through Chapter 0.0: Prerequisites (Python section)
 | 10 | __slots__ Magic | pass |
 | 11 | Virtual Environment | pass |
 | 12 | Collections | pass |
-| 13 | Enumerate | todo |
+| 13 | Enumerate | pass |
 | 14 | Zip and unzip | todo |
 | 15 | Object introspection | todo |
 | 16 | Comprehensions | todo |
