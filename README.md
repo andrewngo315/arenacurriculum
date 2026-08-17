@@ -18,7 +18,7 @@ Currently working through Chapter 0.0: Prerequisites (Python section)
 | 06 | Ternary Operators | pass |
 | 07 | Decorators | pass |
 | 08 | Global & Return | pass |
-| 09 | Mutation | todo |
+| 09 | Mutation | pass |
 | 10 | __slots__ Magic | todo |
 | 11 | Virtual Environment | todo |
 | 12 | Collections | todo |
