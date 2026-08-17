@@ -22,7 +22,12 @@ class Drone:
 
 # beat 1 - dir, callable, getattr
 def public_methods(obj):
-    raise NotImplementedError
+    out = []
+    for name in dir(obj):
+        if not name.startswith("_") and callable(getattr(obj, name)):
+            out.append(name)
+    return out
+
 
 
 assert public_methods(Robot("r2")) == ["speak"]
@@ -31,7 +36,7 @@ assert public_methods([1, 2]) == sorted(m for m in dir([]) if not m.startswith("
 
 # beat 2 - vars. instance attributes only
 def attributes(obj):
-    raise NotImplementedError
+    return vars(obj) # returns the dictionary
 
 
 assert attributes(Robot("r2")) == {"name": "r2"}
@@ -40,7 +45,7 @@ assert attributes(Drone()) == {"id": 7, "alt": 100}
 
 # beat 3 - the type's name as a string
 def describe(obj):
-    raise NotImplementedError
+    return type(obj).__name__
 
 
 assert describe(5) == "int"
@@ -55,7 +60,7 @@ assert describe(Drone()) == "Drone"
 
 # beat 4 - id, or equivalently is
 def same_object(a, b):
-    raise NotImplementedError
+    return id(a) == id(b) # return a is b also works
 
 
 x = [1, 2]
