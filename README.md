@@ -20,7 +20,7 @@ Currently working through Chapter 0.0: Prerequisites (Python section)
 | 08 | Global & Return | pass |
 | 09 | Mutation | pass |
 | 10 | __slots__ Magic | pass |
-| 11 | Virtual Environment | todo |
+| 11 | Virtual Environment | pass |
 | 12 | Collections | todo |
 | 13 | Enumerate | todo |
 | 14 | Zip and unzip | todo |
