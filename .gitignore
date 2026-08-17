@@ -1,6 +1,9 @@
 .venv/
 ARENA_3.0/
 
+chapter0_fundamentals/part0_prereqs/numpy/*_with_solutions.md
+chapter0_fundamentals/part0_prereqs/numpy/*_with_hints.md
+
 HOURS.md
 docs/
 
