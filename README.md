@@ -19,7 +19,7 @@ Currently working through Chapter 0.0: Prerequisites (Python section)
 | 07 | Decorators | pass |
 | 08 | Global & Return | pass |
 | 09 | Mutation | pass |
-| 10 | __slots__ Magic | todo |
+| 10 | __slots__ Magic | pass |
 | 11 | Virtual Environment | todo |
 | 12 | Collections | todo |
 | 13 | Enumerate | todo |

@@ -1,4 +1,6 @@
 # given - the ordinary class, for contrast
+
+
 class Loose:
     def __init__(self, x, y):
         self.x = x
@@ -7,7 +9,11 @@ class Loose:
 
 # beat 1 - the same class with __slots__
 class Point:
-    raise NotImplementedError
+    __slots__ = ("x", "y")
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
 
 
 p = Point(1, 2)
