@@ -48,7 +48,6 @@ def twice(f, *args, **kwargs):
     return (f(*args, **kwargs), f(*args, **kwargs))
     
 
-print(twice(greet, "bob"))
 assert twice(greet, "bob") == ("hello bob!", "hello bob!")
 assert twice(greet, "bob", greeting="hi") == ("hi bob!", "hi bob!")
 assert twice(max, 3, 9, 4) == (9, 9)

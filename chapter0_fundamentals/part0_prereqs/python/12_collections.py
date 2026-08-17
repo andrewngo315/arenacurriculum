@@ -4,7 +4,13 @@ from enum import Enum
 
 # beat 1 - defaultdict(list)
 def group_by_first_letter(words):
-    raise NotImplementedError
+    dict = {}
+    for w in words:
+        key = w[0]
+        if key not in dict:
+            dict[key] = []
+        dict[key].append(w)
+    return dict
 
 
 assert group_by_first_letter(["ant", "bee", "ape"]) == {"a": ["ant", "ape"], "b": ["bee"]}
@@ -13,7 +19,10 @@ assert group_by_first_letter([]) == {}
 
 # beat 2 - Counter.most_common
 def top_words(text, n):
-    raise NotImplementedError
+    text = text.split()
+    return Counter(text).most_common(n)
+        
+        
 
 
 assert top_words("a b a c a b", 2) == [("a", 3), ("b", 2)]
@@ -23,12 +32,13 @@ assert top_words("x y", 1) == [("x", 1)]
 # beat 3 - build the namedtuple type
 Card = None
 if Card is None:
-    raise NotImplementedError
+    Card = namedtuple("Card", ["rank", "suit"])
+
 
 
 # beat 4 - and construct one
 def make_card(rank, suit):
-    raise NotImplementedError
+    return Card(rank, suit)
 
 
 c = make_card("A", "spades")
@@ -46,7 +56,8 @@ assert isinstance(d, Card)
 
 # beat 5 - deque with maxlen
 def last_n(items, n):
-    raise NotImplementedError
+    d = deque(items, maxlen=n)
+    return d
 
 
 r = last_n([1, 2, 3, 4, 5], 3)
@@ -72,8 +83,8 @@ assert Suit["spades"] is Suit.spades
 
 # beat 6 - look a member up by its value
 def suit_name(value):
-    raise NotImplementedError
-
+    return Suit(value).name
+    
 
 assert suit_name(1) == "spades"
 assert suit_name(2) == "hearts"

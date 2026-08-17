@@ -21,7 +21,7 @@ Currently working through Chapter 0.0: Prerequisites (Python section)
 | 09 | Mutation | pass |
 | 10 | __slots__ Magic | pass |
 | 11 | Virtual Environment | pass |
-| 12 | Collections | todo |
+| 12 | Collections | pass |
 | 13 | Enumerate | todo |
 | 14 | Zip and unzip | todo |
 | 15 | Object introspection | todo |

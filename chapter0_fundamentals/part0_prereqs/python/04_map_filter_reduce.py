@@ -22,7 +22,6 @@ def squares(nums):
     return list(map(square, nums))
     
 
-print(squares([1, 2, 3]))
 assert squares([1, 2, 3]) == [1, 4, 9]
 assert squares([]) == []
 
@@ -36,7 +35,6 @@ def even(a):
 def evens(nums):
     return list(filter(even, nums))
 
-print(evens([0, 1, 2]))
 assert evens([1, 2, 3, 4]) == [2, 4]
 assert evens([1, 3]) == []
 assert evens([0, 1, 2]) == [0, 2]

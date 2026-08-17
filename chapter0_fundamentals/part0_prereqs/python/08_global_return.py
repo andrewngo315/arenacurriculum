@@ -53,7 +53,6 @@ assert high == 9
 def stats(nums):
     return {"count": len(nums), "sum": sum(nums), "mean": sum(nums) / len(nums)}
 
-print(stats([1, 2, 3]))
 assert stats([1, 2, 3]) == {"count": 3, "sum": 6, "mean": 2.0}
 assert stats([4]) == {"count": 1, "sum": 4, "mean": 4.0}
 assert stats([1, 2]) == {"count": 2, "sum": 3, "mean": 1.5}
