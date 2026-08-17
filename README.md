@@ -23,7 +23,7 @@ Currently working through Chapter 0.0: Prerequisites (Python section)
 | 11 | Virtual Environment | pass |
 | 12 | Collections | pass |
 | 13 | Enumerate | pass |
-| 14 | Zip and unzip | todo |
+| 14 | Zip and unzip | pass |
 | 15 | Object introspection | todo |
 | 16 | Comprehensions | todo |
 | 17 | Exceptions | todo |
