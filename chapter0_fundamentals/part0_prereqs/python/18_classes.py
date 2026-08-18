@@ -1,27 +1,36 @@
 # beat 1 - __init__, methods, __repr__, and a class attribute that counts instances
 class Account:
-    count = None
+    count = 0
 
     def __init__(self, owner, balance):
-        raise NotImplementedError
+        self.owner = owner
+        self.balance = balance
+        Account.count = Account.count + 1
 
     def deposit(self, amount):
-        raise NotImplementedError
+        self.balance = self.balance + amount
 
     def withdraw(self, amount):
-        raise NotImplementedError
-
+        self.balance = self.balance - amount
+        if self.balance < 0:
+            self.balance = self.balance + amount
+            raise ValueError("insufficient funds")
+        
     def __repr__(self):
-        raise NotImplementedError
+        return f"{type(self).__name__}({self.owner}, {self.balance})"
 
 
 # beat 2 - inheritance and super()
 class SavingsAccount(Account):
     def __init__(self, owner, balance, rate):
-        raise NotImplementedError
+        super().__init__(owner, balance)
+        self.rate = rate
+        
 
     def add_interest(self):
-        raise NotImplementedError
+        self.balance = self.balance * (1 + self.rate)
+    
+
 
 
 if Account.count is None:
@@ -70,10 +79,10 @@ assert repr(s) == "SavingsAccount(cat, 330.0)"
 # beat 3 - the mutable class-variable trap
 class Tally:
     def __init__(self):
-        raise NotImplementedError
+        self.items = []
 
     def add(self, item):
-        raise NotImplementedError
+        self.items.append(item)
 
 
 t1 = Tally()
@@ -86,10 +95,10 @@ assert t2.items == []
 # beat 4 - __getitem__, the protocol PyTorch's Dataset uses
 class Deck:
     def __init__(self, cards):
-        raise NotImplementedError
+        self.cards = cards 
 
     def __getitem__(self, i):
-        raise NotImplementedError
+        return self.cards[i]
 
 
 d = Deck(["ace", "king", "queen"])
