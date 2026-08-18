@@ -1,5 +1,5 @@
 # beat 1 - a lambda assigned to a name
-add = None
+add = lambda a, b: a + b
 if add is None:
     raise NotImplementedError
 assert callable(add)
@@ -13,7 +13,7 @@ people = [("bob", 30), ("ann", 25), ("cat", 41)]
 
 # beat 2 - sorted with a lambda key, without reordering the caller's list
 def by_age(records):
-    raise NotImplementedError
+    return sorted(records, key=lambda r: r[1])
 
 
 assert by_age(people) == [("ann", 25), ("bob", 30), ("cat", 41)]
@@ -22,7 +22,7 @@ assert people == [("bob", 30), ("ann", 25), ("cat", 41)]
 
 # beat 3 - the key function passed in as an argument
 def sort_by(items, key):
-    raise NotImplementedError
+    return sorted(items, key=key)
 
 
 assert sort_by(["ccc", "a", "bb"], len) == ["a", "bb", "ccc"]
@@ -31,7 +31,8 @@ assert sort_by([-3, 1, -2], abs) == [1, -2, -3]
 
 # beat 4 - a lambda closing over n
 def make_adder(n):
-    raise NotImplementedError
+    return lambda x: n + x
+
 
 
 add_five = make_adder(5)
@@ -40,7 +41,7 @@ assert make_adder(0)(7) == 7
 
 
 # beat 5 - a dict of lambdas
-operations = None
+operations = {"double": lambda x: x * 2, "square": lambda x: x ** 2, "negate": lambda x: x * -1}
 if operations is None:
     raise NotImplementedError
 assert operations["double"](4) == 8
