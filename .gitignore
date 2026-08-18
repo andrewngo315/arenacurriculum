@@ -12,3 +12,5 @@ __pycache__/
 .ipynb_checkpoints/
 
 .DS_Store
+
+chapter0_fundamentals/part0_prereqs/numpy/TEACHING_PLAN.md
