@@ -3,7 +3,8 @@ import itertools
 
 # beat 1 - split, reverse, join
 def reverse_words(sentence):
-    raise NotImplementedError
+    words = sentence.split()
+    return " ".join(words[::-1])
 
 
 assert reverse_words("the cat sat") == "sat cat the"
@@ -12,7 +13,7 @@ assert reverse_words("hi") == "hi"
 
 # beat 2 - itertools.chain.from_iterable
 def flattened(nested):
-    raise NotImplementedError
+    return list(itertools.chain.from_iterable(nested))
 
 
 assert flattened([[1, 2], [3, 4], [5, 6]]) == [1, 2, 3, 4, 5, 6]
@@ -22,7 +23,8 @@ assert flattened([]) == []
 
 # beat 3 - slicing with a negative step
 def is_palindrome(text):
-    raise NotImplementedError
+    return (text[::-1]).lower() == text.lower()
+    
 
 
 assert is_palindrome("racecar") is True
@@ -32,7 +34,7 @@ assert is_palindrome("hello") is False
 
 # beat 4 - merge two dicts without mutating either
 def merged(a, b):
-    raise NotImplementedError
+    return {**a, **b}
 
 
 left = {"x": 1, "y": 2}
@@ -43,8 +45,7 @@ assert left == {"x": 1, "y": 2}
 
 # beat 5 - a comprehension slicing over a stepped range
 def chunk(items, size):
-    raise NotImplementedError
-
+    return [items[i:i + size] for i in range(0, len(items), size)]
 
 assert chunk([1, 2, 3, 4, 5], 2) == [[1, 2], [3, 4], [5]]
 assert chunk([], 3) == []
