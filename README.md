@@ -6,40 +6,7 @@ I truly believe in the value of completing this with integrity and honesty to bu
 
 ## Progress
 
-Currently working through Chapter 0.0: Prerequisites (Python section)
-
-| # | Chapter | Status |
-|---|---|---|
-| 01 | *args and **kwargs | pass |
-| 02 | Debugging | pass |
-| 03 | Generators | pass |
-| 04 | Map, Filter and Reduce | pass |
-| 05 | set Data Structure | pass |
-| 06 | Ternary Operators | pass |
-| 07 | Decorators | pass |
-| 08 | Global & Return | pass |
-| 09 | Mutation | pass |
-| 10 | __slots__ Magic | pass |
-| 11 | Virtual Environment | pass |
-| 12 | Collections | pass |
-| 13 | Enumerate | pass |
-| 14 | Zip and unzip | pass |
-| 15 | Object introspection | todo |
-| 16 | Comprehensions | todo |
-| 17 | Exceptions | todo |
-| 18 | Classes | todo |
-| 19 | Lambdas | todo |
-| 20 | One-Liners | todo |
-| 21 | for/else | todo |
-
-You can verify my progress with the following command: 
-
-```
-git clone https://github.com/andrewngo315/arenacurriculum.git
-cd arenacurriculum
-python3 chapter0_fundamentals/part0_prereqs/python/run_all.py
-```
-
+Currently working through Chapter 0.0: Prerequisites (NumPy section)
 
 
 
